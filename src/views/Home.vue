@@ -5,10 +5,11 @@
     <!-- <img v-if="userId" :src="imgShow" alt="Shop Image" width="300" />
     <img v-if="userId" :src="imgBanner" alt="Shop Image" width="300" /> -->
     <img :src="imgShow" alt="Shop Image" width="300" />
-    <img :src="imgBanner" alt="Shop Image" width="300" />
-    <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
     <button v-if="!userId" @click="loginWithLINE" class="button">Login with LINE</button>
     <button v-if="userId" @click="openLine" class="button">LINE CHAT</button>
+    <img :src="imgBanner" alt="Shop Image" width="300" />
+    <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
+
     <!-- <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
     <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
   </div>
@@ -238,7 +239,7 @@ export default {
 }
 
 .button {
-  width: 25%;
+  width: 50%;
   margin: 10px;
   padding: 10px;
   font-size: 1.2em;
