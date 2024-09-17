@@ -4,10 +4,14 @@
     <h3>LINE User ID: {{ userId }}</h3> -->
     <!-- <img v-if="userId" :src="imgShow" alt="Shop Image" width="300" />
     <img v-if="userId" :src="imgBanner" alt="Shop Image" width="300" /> -->
-    <img :src="imgShow" alt="Shop Image" width="300" />
-    <img :src="imgBanner" alt="Shop Image" width="300" />
-    <button v-if="!userId" @click="loginWithLINE" class="button">Login with LINE</button>
-    <button v-if="userId" @click="openLine" class="button">LINE CHAT</button>
+    <div id="app">
+      <img :src="imgShow" alt="Shop Image" width="350" />
+
+      <button v-if="!userId" @click="loginWithLINE" class="button">Login with LINE</button>
+      <button v-if="userId" @click="openLine" class="button">Line Chat</button>
+      <img :src="imgBanner" alt="Shop Image" width="300" />
+    </div>
+
     <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
 
     <!-- <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
@@ -252,7 +256,7 @@ img {
 }
 
 .button {
-  width: 30%;
+  width: 40%;
   margin: 10px;
   padding: 10px;
   font-size: 1.2em;
@@ -265,6 +269,6 @@ img {
 }
 
 .button:hover {
-  background-color: #015045;
+  background-color: #7a035f;
 }
 </style>
