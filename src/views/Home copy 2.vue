@@ -238,9 +238,6 @@ export default {
   min-height: 100vh;
   text-align: center;
 }
-img {
-  margin-top: 10px;
-}
 
 #app {
   display: flex;
@@ -248,23 +245,22 @@ img {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  text-align: center;
 }
 
 .button {
-  width: 30%;
+  width: 50%;
   margin: 10px;
   padding: 10px;
   font-size: 1.2em;
   text-align: center;
   border: none;
   border-radius: 5px;
-  background-color: #067904;
+  background-color: #007bff;
   color: white;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #015045;
+  background-color: #0056b3;
 }
 </style>
