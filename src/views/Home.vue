@@ -235,7 +235,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 100vh;
   text-align: center;
 }
 
