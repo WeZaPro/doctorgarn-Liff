@@ -10,7 +10,7 @@
     <button v-if="!userId" @click="loginWithLINE" class="button">Login with LINE</button>
     <button v-if="userId" @click="openLine" class="button">LINE CHAT</button>
     <!-- <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
-    <button v-if="userId" @click="logout" class="button">Logout</button>
+    <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
   </div>
 </template>
 
