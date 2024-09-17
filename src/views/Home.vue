@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="container">
     <!-- <h1>Login with LINE and Send Message</h1>
     <h3>LINE User ID: {{ userId }}</h3> -->
     <!-- <img v-if="userId" :src="imgShow" alt="Shop Image" width="300" />
@@ -230,6 +230,15 @@ export default {
 </style> -->
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
 #app {
   display: flex;
   flex-direction: column;
