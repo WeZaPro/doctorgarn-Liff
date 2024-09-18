@@ -7,8 +7,8 @@
     <div id="app">
       <img :src="imgShow" alt="Shop Image" width="350" />
 
-      <button v-if="!lineUid" @click="loginWithQRCode" class="button">Login with LINE</button>
-      <button v-if="lineUid" @click="openLine" class="button">Line Chat</button>
+      <button v-if="!_userId" @click="loginWithQRCode" class="button">Login with LINE</button>
+      <button v-if="_userId" @click="openLine" class="button">Line Chat</button>
       <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
       <img :src="imgBanner" alt="Shop Image" width="300" />
     </div>
@@ -32,6 +32,7 @@ export default {
       _profile: {},
       _profilePictureUrl: '',
       userId: null,
+      _userId: '',
       lineUid_fromToken: '',
       accessToken: null,
       adsId: null,
@@ -51,7 +52,7 @@ export default {
           },
         })
         .then(response => {
-          const _userId = response.data.userId
+          this._userId = response.data.userId
 
           // ตั้งค่า cookie ด้วย js-cookie
           Cookies.set('_userId', _userId, { expires: 7, path: '/' })
