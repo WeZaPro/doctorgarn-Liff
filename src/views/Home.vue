@@ -14,7 +14,7 @@
 
     <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
 
-    <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button>
+    <button v-if="!userId" @click="sendMessage" class="button">Send Message to LINE Chat</button>
     <button v-if="userId" @click="logout" class="button">Logout</button>
   </div>
 </template>
