@@ -40,6 +40,23 @@ export default {
     }
   },
   methods: {
+    getLineUserProfile(token) {
+      axios
+        .get('https://api.line.me/v2/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(response => {
+          const userId = response.data.userId
+          console.log('LINE User ID:', userId)
+          alert('userid ', userId)
+          // ทำงานต่อด้วย userId หรือเก็บลงระบบ
+        })
+        .catch(error => {
+          console.error('Error fetching user profile:', error)
+        })
+    },
     loginWithQRCode() {
       // const lineLoginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${
       //   import.meta.env.VITE_APP_LINE_CHANNEL_ID
@@ -217,7 +234,18 @@ export default {
     },
   },
   created() {
-    this.initializeLIFF()
+    // this.initializeLIFF()
+
+    // ดึง token จาก URL query string
+    const urlParams = new URLSearchParams(window.location.search)
+    const token = urlParams.get('token')
+
+    if (token) {
+      // ใช้ token เพื่อเรียก LINE API สำหรับดึงข้อมูลผู้ใช้
+      this.getLineUserProfile(token)
+    } else {
+      console.error('No token found in query string')
+    }
   },
   mounted() {
     // console.log('VITE_LIFF_ID ', import.meta.env.VITE_LIFF_ID_LOGIN)
