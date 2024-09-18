@@ -7,7 +7,7 @@
     <div id="app">
       <img :src="imgShow" alt="Shop Image" width="350" />
 
-      <button v-if="!userId" @click="loginWithQRCode" class="button">Login with LINE</button>
+      <button v-if="!userId" @click="loginWithLINE" class="button">Login with LINE</button>
       <button v-if="userId" @click="openLine" class="button">Line Chat</button>
       <img :src="imgBanner" alt="Shop Image" width="300" />
     </div>
@@ -15,7 +15,7 @@
     <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
 
     <!-- <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
-    <button v-if="userId" @click="logout" class="button">Logout</button>
+    <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
   </div>
 </template>
 
@@ -40,14 +40,6 @@ export default {
     }
   },
   methods: {
-    loginWithQRCode() {
-      const lineLoginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${
-        import.meta.env.VITE_APP_LINE_CHANNEL_ID
-      }&redirect_uri=${
-        import.meta.env.VITE_APP_LINE_REDIRECT_URI
-      }&state=randomstring&scope=profile%20openid&prompt=consent`
-      window.location.href = lineLoginUrl
-    },
     // Initialize LIFF SDK
     async initializeLIFF() {
       try {
