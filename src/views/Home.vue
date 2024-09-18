@@ -21,6 +21,7 @@
 
 <script>
 import liff from '@line/liff'
+import axios from 'axios'
 
 export default {
   data() {
