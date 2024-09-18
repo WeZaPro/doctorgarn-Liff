@@ -14,7 +14,7 @@
 
     <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
 
-    <!-- <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
+    <button v-if="userId" @click="sendMessage" class="button">Send Message to LINE Chat</button>
     <button v-if="userId" @click="logout" class="button">Logout</button>
   </div>
 </template>
@@ -61,9 +61,10 @@ export default {
             console.log('this.profile.userId:', this._profile.userId)
             console.log('this.profile.displayName:', this._profile.displayName)
           })
-        } else {
-          liff.login() // Redirect to LINE login if not logged in
         }
+        // } else {
+        //   liff.login() // Redirect to LINE login if not logged in
+        // }
       } catch (error) {
         console.error('LIFF initialization failed:', error)
       }
