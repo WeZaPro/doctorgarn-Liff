@@ -7,8 +7,8 @@
     <div id="app">
       <img :src="imgShow" alt="Shop Image" width="350" />
 
-      <button v-if="!userId" @click="loginWithQRCode" class="button">Login with LINE</button>
-      <button v-if="userId" @click="openLine" class="button">Line Chat</button>
+      <button v-if="!lineUid" @click="loginWithQRCode" class="button">Login with LINE</button>
+      <button v-if="lineUid" @click="openLine" class="button">Line Chat</button>
       <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
       <img :src="imgBanner" alt="Shop Image" width="300" />
     </div>
@@ -32,7 +32,7 @@ export default {
       _profile: {},
       _profilePictureUrl: '',
       userId: null,
-      lineUid: '',
+      lineUid_fromToken: '',
       accessToken: null,
       adsId: null,
       adsId_cookieValue: null,
@@ -51,12 +51,12 @@ export default {
           },
         })
         .then(response => {
-          const userId = response.data.userId
+          const _userId = response.data.userId
 
           // ตั้งค่า cookie ด้วย js-cookie
-          Cookies.set('userId', userId, { expires: 7, path: '/' })
-
-          console.log('LINE User ID:', userId)
+          Cookies.set('_userId', _userId, { expires: 7, path: '/' })
+          // this.lineUid = userId
+          console.log('LINE _userId ID:', _userId)
         })
         .catch(error => {
           console.error('Error fetching user profile:', error)
@@ -254,8 +254,8 @@ export default {
   },
   mounted() {
     // console.log('VITE_LIFF_ID ', import.meta.env.VITE_LIFF_ID_LOGIN)
-    this.lineUid = Cookies.get('userId') //userId
-    console.log('User ID from cookie:', this.lineUid)
+    this.lineUid_fromToken = Cookies.get('_userId')
+    console.log('User ID from cookie:', this.lineUid_fromToken)
 
     this.adsId = this.getQueryParam('ads_id')
     console.log(' this.adsId ', this.adsId)
