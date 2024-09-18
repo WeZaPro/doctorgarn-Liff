@@ -9,13 +9,13 @@
 
       <button v-if="!userId" @click="loginWithQRCode" class="button">Login with LINE</button>
       <button v-if="userId" @click="openLine" class="button">Line Chat</button>
+      <!-- <button v-if="userId" @click="logout" class="button">Logout</button> -->
       <img :src="imgBanner" alt="Shop Image" width="300" />
     </div>
 
     <!-- <img v-if="_profilePictureUrl" :src="_profilePictureUrl" alt="Profile Image" width="100" /> -->
 
-    <button v-if="!userId" @click="sendMessage" class="button">Send Message to LINE Chat</button>
-    <button v-if="userId" @click="logout" class="button">Logout</button>
+    <!-- <button v-if="!userId" @click="sendMessage" class="button">Send Message to LINE Chat</button> -->
   </div>
 </template>
 
@@ -63,7 +63,8 @@ export default {
           })
         } else {
           // liff.login() // Redirect to LINE login if not logged in
-          alert('Please Login')
+          // alert('Please Login')
+          console.log('Login')
         }
       } catch (error) {
         console.error('LIFF initialization failed:', error)
