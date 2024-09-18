@@ -254,7 +254,7 @@ export default {
   },
   mounted() {
     // console.log('VITE_LIFF_ID ', import.meta.env.VITE_LIFF_ID_LOGIN)
-    this.lineUid = Cookies.get('convUserId')
+    this.lineUid = Cookies.get('userId') //userId
     console.log('User ID from cookie:', this.lineUid)
 
     this.adsId = this.getQueryParam('ads_id')
