@@ -55,9 +55,9 @@ export default {
           this._userId = response.data.userId
 
           // ตั้งค่า cookie ด้วย js-cookie
-          Cookies.set('_userId', _userId, { expires: 7, path: '/' })
+          Cookies.set('_userId', this._userId, { expires: 7, path: '/' })
           // this.lineUid = userId
-          console.log('LINE _userId ID:', _userId)
+          console.log('LINE _userId ID:', this._userId)
         })
         .catch(error => {
           console.error('Error fetching user profile:', error)
