@@ -61,10 +61,10 @@ export default {
             console.log('this.profile.userId:', this._profile.userId)
             console.log('this.profile.displayName:', this._profile.displayName)
           })
+        } else {
+          // liff.login() // Redirect to LINE login if not logged in
+          alert('Please Login')
         }
-        // } else {
-        //   liff.login() // Redirect to LINE login if not logged in
-        // }
       } catch (error) {
         console.error('LIFF initialization failed:', error)
       }
