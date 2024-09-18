@@ -32,7 +32,7 @@ export default {
       _profile: {},
       _profilePictureUrl: '',
       userId: null,
-      _userId: '',
+      _userId: null,
       lineUid_fromToken: '',
       accessToken: null,
       adsId: null,
@@ -256,7 +256,10 @@ export default {
   mounted() {
     // console.log('VITE_LIFF_ID ', import.meta.env.VITE_LIFF_ID_LOGIN)
     this.lineUid_fromToken = Cookies.get('_userId')
-    console.log('User ID from cookie:', this.lineUid_fromToken)
+    if (this.lineUid_fromToken) {
+      console.log('User ID from cookie:', this.lineUid_fromToken)
+      this._userId = this.lineUid_fromToken
+    }
 
     this.adsId = this.getQueryParam('ads_id')
     console.log(' this.adsId ', this.adsId)
