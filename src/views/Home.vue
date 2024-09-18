@@ -22,6 +22,7 @@
 <script>
 import liff from '@line/liff'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default {
   data() {
@@ -31,6 +32,7 @@ export default {
       _profile: {},
       _profilePictureUrl: '',
       userId: null,
+      lineUid: '',
       accessToken: null,
       adsId: null,
       adsId_cookieValue: null,
@@ -50,9 +52,11 @@ export default {
         })
         .then(response => {
           const userId = response.data.userId
+
+          // ตั้งค่า cookie ด้วย js-cookie
+          Cookies.set('userId', userId, { expires: 7, path: '/' })
+
           console.log('LINE User ID:', userId)
-          alert('userid ', userId)
-          // ทำงานต่อด้วย userId หรือเก็บลงระบบ
         })
         .catch(error => {
           console.error('Error fetching user profile:', error)
@@ -250,6 +254,8 @@ export default {
   },
   mounted() {
     // console.log('VITE_LIFF_ID ', import.meta.env.VITE_LIFF_ID_LOGIN)
+    this.lineUid = Cookies.get('convUserId')
+    console.log('User ID from cookie:', this.lineUid)
 
     this.adsId = this.getQueryParam('ads_id')
     console.log(' this.adsId ', this.adsId)
