@@ -1,18 +1,11 @@
 <template>
-  <div id="container">
-    <div id="app">
-      <div class="congratulations">
-        <h1>Congratulations!</h1>
-        <img :src="imgShow" alt="Shop Image" width="350" />
-        <p>Welcome to our application. We're glad to have you here!</p>
-        <h3>lineUserId</h3>
-        <p>{{ profile.userId }}</p>
-        <!-- <h3>bot user id</h3>
-    <p>{{ botUserId }}</p> -->
+  <div class="congratulations">
+    <h1>Congratulations!</h1>
+    <p>Welcome to our application. We're glad to have you here!</p>
+    <h3>lineUserId</h3>
+    <p>{{ profile.userId }}</p>
 
-        <button @click="openLineChat" class="button">openLineChat</button>
-      </div>
-    </div>
+    <button @click="openLineChat" class="button">openLineChat</button>
   </div>
 </template>
 
@@ -20,7 +13,7 @@
 //import HelloWorld from "./components/HelloWorld.vue";
 import liff from '@line/liff'
 //import SetDataService from '../../services/SetDataService'
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   name: 'App',
   components: {
@@ -28,7 +21,6 @@ export default {
   },
   data() {
     return {
-      imgShow: 'https://www.doctorgarn.com/wp-content/uploads/2024/01/bg4-03.png',
       imageProfile: '',
       os: '',
       loggedIn: false,
@@ -65,44 +57,17 @@ export default {
       _ads_utm_medium: '',
       _ads_utm_term: '',
       _IP: '',
-      //
-      get_lineUserId: '',
     }
   },
   // Url Dev = https://liff.line.me/1656824759-PrZzVE5w/?botUserId=Uad26c3928a8f42fb5eb677bf560bf07f
   mounted() {
     //run liff
-    // this.qryStringBotUid = this.$route.query.botUserId
-    // console.log('qryStringBotUid ', this.qryStringBotUid)
-    // this.updateLineBotUserId()
+    this.qryStringBotUid = this.$route.query.botUserId
     this.liffAdd()
     // this.getIpAddress()
     // this.getParamUrl()
   },
   methods: {
-    getQueryParam() {
-      const urlParams = new URLSearchParams(window.location.search)
-      const botUserId = urlParams.get('botUserId')
-      console.log('botUserId ', botUserId)
-    },
-    async updateLineBotUserId(_lineUserId) {
-      //
-      this.qryStringBotUid = this.$route.query.botUserId
-      console.log('qryStringBotUid ', this.qryStringBotUid)
-      console.log('_lineUserId ', _lineUserId)
-
-      const payload = {
-        lineUid: _lineUserId,
-        lineBotUid: this.qryStringBotUid,
-      }
-      //VITE_API_URL
-      try {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/updateLineBotId`, payload)
-        console.log(response.data) // Handle response data
-      } catch (error) {
-        console.error(error) // Handle error
-      }
-    },
     // logOut() {
     //   // liff.logout()
     //   // window.location.reload()
@@ -161,8 +126,6 @@ export default {
             liff.getProfile().then(profile => {
               //this.sendMsg() // ใช้ตอนอยู่บน มือถือ ส่วนบน web ไม่ใช้
               this.profile = profile
-
-              this.updateLineBotUserId(this.profile.userId)
 
               //Todo -> function-->
               if ((this.os = 'web')) {
@@ -242,41 +205,33 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
-img {
+  color: #fcfcfc;
   margin-top: 10px;
 }
-
-#app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+#header {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #444242;
+  margin-top: 10px;
 }
-
-.button {
-  width: 40%;
-  margin: 10px;
-  padding: 10px;
-  font-size: 1.2em;
+#btnA {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  border: none;
-  border-radius: 5px;
-  background-color: #067904;
-  color: white;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #7a035f;
+  font-size: 0.8em;
+  font-weight: 100;
+  color: #f7f8f8;
+  background-color: rgb(34, 0, 255);
+  margin-top: 60px;
+  width: 300px; /* was 150, now 150px */
+  height: 150px;
 }
 </style>
